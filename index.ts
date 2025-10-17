@@ -27,11 +27,11 @@ import { ChatPromptTemplate } from '@langchain/core/prompts';
  */
 const models: Record<string, BaseChatModel> = {
   openai: new ChatOpenAI({
-    modelName: 'gpt-4o-mini',
+    model: 'gpt-4o-mini',
     temperature: 0.7,
   }),
   claude: new ChatAnthropic({
-    modelName: 'claude-haiku-4-5-20251001',
+    model: 'claude-haiku-4-5-20251001',
     temperature: 0.7,
   }),
 };
@@ -106,7 +106,7 @@ async function example2PromptTemplates(model: BaseChatModel) {
   const formattedPrompt = await promptTemplate.formatMessages({
     role: 'JavaScript',
     style: 'clear and practical',
-    question: 'How do I use async/await in TypeScript?',
+    question: 'How do I use async/await in TypeScript? Keep it under 100 words',
   });
 
   const response = await model.invoke(formattedPrompt);
